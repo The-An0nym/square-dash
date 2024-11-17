@@ -1,0 +1,110 @@
+#canvas {
+  position: fixed;
+  width: 1000px;
+  height: 500px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid #555;
+  z-index: 1000;
+}
+
+.line_vertical {
+  position: fixed;
+  height: 500px;
+  width: 0.75px;
+  background-image: linear-gradient(#444 0%, black 50%, #444 100%);
+  z-index: 1000;
+}
+
+.line_horizontal {
+  position: fixed;
+  width: 1000px;
+  height: 0.75px;
+  background-image: linear-gradient(90deg, #444 0%, black 50%, #444 100%);
+  z-index: 1000;
+}
+
+#mc {
+  height: 20px;
+  width: 20px;
+  background-color: #adf;
+  position: fixed;
+  z-index: 500;
+}
+
+.attack {
+  background-color: #faa;
+  height: 20px;
+  width: 20px;
+  position: fixed;
+  display: none;
+}
+
+#aLeft,
+#aRight {
+  width: 40px;
+}
+
+#aLeft {
+  transform: translateX(-100%);
+}
+
+#aRight {
+  transform: translateX(50%);
+}
+
+#aUp,
+#aDown {
+  height: 40px;
+}
+
+#aUp {
+  transform: translateY(-100%);
+}
+
+#aDown {
+  transform: translateY(50%);
+}
+
+#aRound {
+  display: none;
+}
+
+#aTopRight {
+  display: block;
+  transform: translate(-100%, -100%);
+}
+
+#aTopLeft {
+  display: block;
+  transform: translate(100%, -100%);
+}
+
+#aBotRight {
+  display: block;
+  transform: translate(100%, 100%);
+}
+
+#aBotLeft {
+  display: block;
+  transform: translate(-100%, 100%);
+}
+
+.charge {
+  background-color: black;
+  position: fixed;
+}
+
+.blue {
+  position: fixed;
+  background-color: blue;
+  width: 20px;
+  height: 20px;
+}
+
+.red {
+  position: fixed;
+  background-color: red;
+  width: 20px;
+  height: 20px;
+}
