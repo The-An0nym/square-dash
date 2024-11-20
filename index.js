@@ -5,6 +5,8 @@ mc.style.left = "500px";
 var McPosY = 10;
 var McPosX = 25;
 
+var McLives = 10;
+
 const aUp = document.getElementById("aUp");
 const aLeft = document.getElementById("aLeft");
 const aDown = document.getElementById("aDown");
@@ -25,8 +27,8 @@ const attackFields = [
     [0, 2],
   ],
   [
-    [0, 1],
-    [0, 2],
+    [1, 0],
+    [2, 0],
   ],
   [
     [-1, -1],
@@ -94,6 +96,7 @@ function moveVertical(int) {
     McPosY -= int;
     mc.style.top = y + "px";
   }
+  checkClipping();
 }
 
 function moveHorizontal(int) {
@@ -102,6 +105,15 @@ function moveHorizontal(int) {
     McPosX += int;
     mc.style.left = x + "px";
   }
+  checkClipping();
+}
+
+function checkClipping() {
+  enemies.forEach((obj) => {
+    if (obj.posX === McPosX && obj.posY === McPosY) {
+      kill();
+    }
+  });
 }
 
 function attack(int) {
@@ -115,7 +127,9 @@ function attack(int) {
     x[0] += McPosX;
     x[1] += McPosY;
   });
-  enemies.forEach((item) => item.checkAttack(killFields));
+  for (let i = enemies.length - 1; i >= 0; i--) {
+    enemies[i].checkAttack(killFields);
+  }
 }
 
 function hide(elem) {
@@ -123,5 +137,9 @@ function hide(elem) {
 }
 
 function kill() {
+  McLives--;
+  if (McLives > 0) {
+    return;
+  }
   console.log("Game Over!");
 }

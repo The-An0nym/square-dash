@@ -1,25 +1,30 @@
 class Blue {
-  constructor(posX, posY, timeDelay) {
+  constructor(lives = 1) {
     enemies.push(this);
-    this.lives = 1;
-    this.posX = posX;
-    this.newX = posX;
-    this.posY = posY;
-    this.newY = posY;
+    this.lives = lives <= 2 ? lives : 2;
+
+    const pos = randomPosition();
+    this.posX = this.newX = pos[0];
+    this.posY = this.newY = pos[1];
+
     this.square = document.createElement("span");
-    this.square.className = "blue";
+    this.square.className = `square b${this.lives}`;
     this.updatePos();
-    can.appendChild(this.square);
 
     this.charge = true;
     this.chargeLine = document.createElement("span");
     this.chargeLine.className = "charge";
-    can.appendChild(this.chargeLine);
+    this.square.appendChild(this.chargeLine);
 
-    this.timer;
+    can.appendChild(this.square);
+
     setTimeout(() => {
-      this.timer = setInterval(() => this.move(), 1000);
-    }, timeDelay);
+      this.startInterval();
+    }, Math.random() * 1000);
+  }
+
+  startInterval() {
+    this.timer = setInterval(() => this.move(), 1000);
   }
 
   move() {
@@ -82,6 +87,16 @@ class Blue {
     if (!hit) {
       return;
     }
+
+    this.lives--;
+    if (this.lives > 0) {
+      this.square.className = `square b${this.lives}`;
+      return;
+    }
+    this.die();
+  }
+
+  die() {
     this.square.remove();
     this.chargeLine.remove();
 

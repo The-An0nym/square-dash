@@ -1,17 +1,25 @@
 class Red {
-  constructor(posX, posY, timeDelay) {
+  constructor(lives = 1) {
     enemies.push(this);
-    this.lives = 1;
-    this.posX = posX;
-    this.posY = posY;
+    this.lives = lives <= 3 ? lives : 3;
+
+    const pos = randomPosition();
+    this.posX = pos[0];
+    this.posY = pos[1];
+
     this.square = document.createElement("span");
-    this.square.className = "red";
+    this.square.className = `square r${this.lives}`;
     this.updatePos();
+
     can.appendChild(this.square);
-    this.timer;
+
     setTimeout(() => {
-      this.timer = setInterval(() => this.move(), 500);
-    }, timeDelay);
+      this.startInterval();
+    }, Math.random() * 500);
+  }
+
+  startInterval() {
+    this.timer = setInterval(() => this.move(), 500);
   }
 
   move() {
@@ -48,6 +56,16 @@ class Red {
     if (!hit) {
       return;
     }
+
+    this.lives--;
+    if (this.lives > 0) {
+      this.square.className = `square r${this.lives}`;
+      return;
+    }
+    this.die();
+  }
+
+  die() {
     this.square.remove();
     clearInterval(this.timer);
     const index = enemies.indexOf(this);
