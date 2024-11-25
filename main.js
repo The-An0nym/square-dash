@@ -1,53 +1,11 @@
-const can = document.getElementById("canvas");
-const mc = document.getElementById("mc");
-mc.style.top = "200px";
-mc.style.left = "500px";
-var McPosY = 10;
-var McPosX = 25;
-
-var McLives = 10;
-
-const aUp = document.getElementById("aUp");
-const aLeft = document.getElementById("aLeft");
-const aDown = document.getElementById("aDown");
-const aRight = document.getElementById("aRight");
-const aRound = document.getElementById("aRound");
-const attackElements = [aUp, aLeft, aDown, aRight, aRound];
-const attackFields = [
-  [
-    [0, -1],
-    [0, -2],
-  ],
-  [
-    [-1, 0],
-    [-2, 0],
-  ],
-  [
-    [0, 1],
-    [0, 2],
-  ],
-  [
-    [1, 0],
-    [2, 0],
-  ],
-  [
-    [-1, -1],
-    [1, -1],
-    [-1, 1],
-    [1, 1],
-  ],
-];
-
-var enemies = [];
-
 function initialize() {
-  for (let i = 1; i < 50; i++) {
+  for (let i = 0; i < 51; i++) {
     const line = document.createElement("span");
     line.className = "line_vertical";
     line.style.left = i * 20 + "px";
     can.appendChild(line);
   }
-  for (let i = 1; i < 25; i++) {
+  for (let i = 0; i < 26; i++) {
     const line = document.createElement("span");
     line.className = "line_horizontal";
     line.style.top = i * 20 + "px";
@@ -94,7 +52,7 @@ function moveVertical(int) {
   const y = (McPosY - int) * 20; // inverted due to 0 being at the top
   if (!(y < 0 || y >= 500)) {
     McPosY -= int;
-    mc.style.top = y + "px";
+    mc.style.top = y + 0.5 + "px";
   }
   checkClipping();
 }
@@ -103,7 +61,7 @@ function moveHorizontal(int) {
   const x = (McPosX + int) * 20;
   if (!(x < 0 || x >= 1000)) {
     McPosX += int;
-    mc.style.left = x + "px";
+    mc.style.left = x + 0.5 + "px";
   }
   checkClipping();
 }
@@ -112,6 +70,13 @@ function checkClipping() {
   enemies.forEach((obj) => {
     if (obj.posX === McPosX && obj.posY === McPosY) {
       kill();
+    }
+  });
+  hearts.forEach((obj) => {
+    if (obj.x === McPosX && obj.y === McPosY) {
+      McLives++;
+      filling.style.width = (McLives / maxLives) * 30 + "px";
+      obj.remove();
     }
   });
 }
@@ -130,6 +95,16 @@ function attack(int) {
   for (let i = enemies.length - 1; i >= 0; i--) {
     enemies[i].checkAttack(killFields);
   }
+  if (
+    enemies.length === 0 &&
+    document.getElementById("menu").style.display === "none"
+  ) {
+    if (currLevel === atLevel) {
+      atLevel++;
+    }
+    document.getElementById("menu").style.display = "flex";
+    openLevels();
+  }
 }
 
 function hide(elem) {
@@ -138,8 +113,19 @@ function hide(elem) {
 
 function kill() {
   McLives--;
+  filling.style.width = (McLives / maxLives) * 30 + "px";
   if (McLives > 0) {
     return;
   }
-  console.log("Game Over!");
+
+  document.getElementById("menu").style.display = "flex";
+  mainMenu();
+
+  for (let i = enemies.length - 1; i >= 0; i--) {
+    enemies[i].die();
+  }
+}
+
+function removeConnections(obj) {
+  obj = null;
 }

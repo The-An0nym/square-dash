@@ -2,7 +2,7 @@ function randomPosition() {
   const x = Math.floor(Math.random() * 60) - 5;
   const y = Math.floor(Math.random() * 35) - 5;
 
-  const margin = Math.floor(Math.random() * 15) + 15;
+  const margin = Math.floor(Math.random() * 5) + 5;
   const rand = Math.floor(Math.random() * 4);
 
   switch (rand) {
@@ -16,4 +16,8 @@ function randomPosition() {
       return [50 + margin, y];
   }
   return [0, 0];
+}
+
+function randomFieldPosition() {
+  return [Math.floor(Math.random() * 50), Math.floor(Math.random() * 25)];
 }

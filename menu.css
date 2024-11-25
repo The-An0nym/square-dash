@@ -1,0 +1,98 @@
+#menu {
+  position: fixed;
+  width: 800px;
+  height: 300px;
+  background-color: rgba(220, 230, 240, 0.8);
+  backdrop-filter: blur(2px);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  z-index: 2500;
+}
+
+.menuContent {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 90px;
+}
+
+#levels {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.lvl {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin: 8.5px;
+  transition-duration: 200ms;
+  text-align: center;
+  font-size: 1.6em;
+}
+
+.locked {
+  background-color: rgba(255, 160, 160, 0.8);
+}
+
+.locked:hover {
+  background-color: rgba(255, 100, 100, 0.9);
+}
+
+.unlocked {
+  background-color: rgba(160, 255, 160, 0.8);
+}
+
+.unlocked:hover {
+  background-color: rgba(100, 255, 100, 0.9);
+}
+
+.lvl:hover {
+  cursor: pointer;
+}
+
+#title {
+  font-size: 3em;
+  position: absolute;
+  top: 20px;
+}
+
+.option {
+  font-size: 4em;
+  padding: 5px 30px;
+  margin-top: 20px;
+  background-color: rgba(250, 250, 250, 0.55);
+  transition-duration: 200ms;
+  min-width: 200px;
+  text-align: center;
+}
+
+.option:hover {
+  background-color: rgba(255, 255, 255, 0.85);
+  min-width: 400px;
+  cursor: pointer;
+}
+
+.back {
+  font-size: 2em;
+  padding: 5px 20px;
+  margin-top: 10px;
+  background-color: rgba(250, 250, 250, 0.55);
+  transition-duration: 200ms;
+  min-width: 100px;
+  text-align: center;
+}
+
+.back:hover {
+  background-color: rgba(255, 255, 255, 0.85);
+  min-width: 200px;
+  cursor: pointer;
+}

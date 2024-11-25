@@ -2,9 +2,7 @@ class Black {
   constructor() {
     enemies.push(this);
 
-    const pos = randomPosition();
-    this.posX = pos[0];
-    this.posY = pos[1];
+    [this.posX, this.posY] = randomPosition();
 
     this.square = document.createElement("span");
     this.square.className = "black";
@@ -38,7 +36,7 @@ class Black {
   }
 
   startInterval() {
-    this.timer = setInterval(() => this.move(), 2000);
+    this.timer = setInterval(() => this.move(), intervalTime * 4);
   }
 
   move() {
@@ -48,13 +46,13 @@ class Black {
       if (Math.random() > 0.5) {
         do {
           x = Math.floor(Math.random() * 50);
-        } while (Math.abs(x - McPosX) < 5);
+        } while (Math.abs(x - McPosX) < 8 || Math.abs(x - McPosX) > 15);
         this.posX = x;
         this.posY = McPosY;
       } else {
         do {
           y = Math.floor(Math.random() * 25);
-        } while (Math.abs(y - McPosY) < 5);
+        } while (Math.abs(y - McPosY) < 8 || Math.abs(y - McPosY) > 15);
         this.posX = McPosX;
         this.posY = y;
       }
@@ -132,6 +130,11 @@ class Black {
     if (!hit) {
       return;
     }
+
+    this.die();
+  }
+
+  die() {
     this.square.remove();
     this.warnLineV.remove();
     this.warnLineH.remove();
@@ -142,5 +145,6 @@ class Black {
       // only splice array when item is found
       enemies.splice(index, 1); // 2nd parameter means remove one item only
     }
+    removeConnections(this);
   }
 }

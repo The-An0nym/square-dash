@@ -3,9 +3,7 @@ class Blue {
     enemies.push(this);
     this.lives = lives <= 2 ? lives : 2;
 
-    const pos = randomPosition();
-    this.posX = this.newX = pos[0];
-    this.posY = this.newY = pos[1];
+    [this.newX, this.newY] = [this.posX, this.posY] = randomPosition();
 
     this.square = document.createElement("span");
     this.square.className = `square b${this.lives}`;
@@ -14,7 +12,11 @@ class Blue {
     this.charge = true;
     this.chargeLine = document.createElement("span");
     this.chargeLine.className = "charge";
-    this.square.appendChild(this.chargeLine);
+    this.dot = document.createElement("span");
+    this.dot.className = "dot";
+
+    this.chargeLine.appendChild(this.dot);
+    can.appendChild(this.chargeLine);
 
     can.appendChild(this.square);
 
@@ -24,18 +26,25 @@ class Blue {
   }
 
   startInterval() {
-    this.timer = setInterval(() => this.move(), 1000);
+    this.timer = setInterval(() => this.move(), intervalTime * 2);
   }
 
   move() {
     this.charge = !this.charge;
     if (!this.charge) {
-      if (Math.abs(this.posX - McPosX) - Math.abs(this.posY - McPosY) > 0) {
+      if (this.posX === McPosX) {
+        this.newY = McPosY;
+      } else if (this.posY === McPosY) {
         this.newX = McPosX;
       } else {
-        this.newY = McPosY;
+        if (Math.round(Math.random()) === 0) {
+          this.newY = McPosY;
+        } else {
+          this.newX = McPosX;
+        }
       }
       this.updateCharge();
+
       return;
     }
 
@@ -69,15 +78,19 @@ class Blue {
     const h =
       this.newY - this.posY === 0 ? 1.5 : Math.abs(this.newY - this.posY) * 20;
 
-    this.newX >=
-      this.chargeLine.setAttribute(
-        "style",
-        `display:block; 
+    this.chargeLine.setAttribute(
+      "style",
+      `display:block; 
       left: ${x * 20 + 10}px; 
       top: ${y * 20 + 10}px; 
       width: ${w}px;
       height: ${h}px`
-      );
+    );
+
+    this.dot.setAttribute(
+      "style",
+      `left: ${this.newX * 20 + 8.5}px; top: ${this.newY * 20 + 8.5}px;`
+    );
   }
 
   checkAttack(list) {
@@ -106,5 +119,6 @@ class Blue {
       // only splice array when item is found
       enemies.splice(index, 1); // 2nd parameter means remove one item only
     }
+    removeConnections(this);
   }
 }
