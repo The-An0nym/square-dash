@@ -4,43 +4,68 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Square-dash</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="menu.css" />
   </head>
   <body>
     <div id="canvas">
-      <span id="mc">
-        <span id="aUp" class="attack"></span>
-        <span id="aLeft" class="attack"></span>
-        <span id="aDown" class="attack"></span>
-        <span id="aRight" class="attack"></span>
-        <span id="aRound">
-          <span id="aTopRight" class="attack"></span>
-          <span id="aTopLeft" class="attack"></span>
-          <span id="aBotRight" class="attack"></span>
-          <span id="aBotLeft" class="attack"></span>
+      <div id="field">
+        <span id="player">
+          <!-- Attack squares (prefixed with [a])-->
+          <span id="aUp" class="attack"></span>
+          <span id="aLeft" class="attack"></span>
+          <span id="aDown" class="attack"></span>
+          <span id="aRight" class="attack"></span>
+          <span id="aRound">
+            <span id="aTopRight" class="attack"></span>
+            <span id="aTopLeft" class="attack"></span>
+            <span id="aBotRight" class="attack"></span>
+            <span id="aBotLeft" class="attack"></span>
+          </span>
         </span>
-      </span>
-      <span id="hpBar"><span id="filling"></span></span>
+        <span id="hpBar"><span id="hpBarHealth"></span></span>
+      </div>
     </div>
     <div id="menu">
       <div id="title">SQUARE-DASH</div>
 
       <div id="mainMenu" class="menuContent">
         <div class="option" onclick="openLevels()">LEVELS</div>
-        <div class="option" onclick="tutorial()">TUTORIAL</div>
+        <div class="option" onclick="openTutorial()">TUTORIAL</div>
       </div>
       <div id="levels" class="menuContent" style="display: none"></div>
+      <div id="tutorial" class="menuContent" style="display: none">
+        <div id="tutorialTextBlockWrapper">
+          <span class="tutorialTextBlock">
+            <p class="tutorialTextBlockTitle">Player movement:</p>
+            <b>[↑]</b> up<br />
+            <b>[←]</b> left<br />
+            <b>[↓]</b> down<br />
+            <b>[→]</b> right<br />
+          </span>
+          <span class="tutorialTextBlock">
+            <p class="tutorialTextBlockTitle">Player attack:</p>
+            <b>[W]</b> up<br />
+            <b>[A]</b> left<br />
+            <b>[S]</b> down<br />
+            <b>[D]</b> right<br />
+            <b>[Space]</b> area
+          </span>
+        </div>
+        <div class="back" onclick="showMainMenu()">MENU</div>
+      </div>
     </div>
+    <!-- Main scrips -->
     <script src="scripts/variables.js"></script>
-    <script src="main.js"></script>
-    <script src="menu.js"></script>
-    <script src="levelCycle.js"></script>
-    <script src="scripts/red.js"></script>
-    <script src="scripts/blue.js"></script>
-    <script src="scripts/black.js"></script>
-    <script src="scripts/pink.js"></script>
-    <script src="scripts/positions.js"></script>
-    <script src="scripts/heart.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/htmlManipulation.js"></script>
+    <script src="scripts/overarchingClassMethods.js"></script>
+    <!-- Class scrips -->
+    <script src="scripts/classes/red.js"></script>
+    <script src="scripts/classes/blue.js"></script>
+    <script src="scripts/classes/black.js"></script>
+    <script src="scripts/classes/pink.js"></script>
+    <script src="scripts/classes/heart.js"></script>
   </body>
 </html>

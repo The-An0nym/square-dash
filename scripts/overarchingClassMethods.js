@@ -21,3 +21,15 @@ function randomPosition() {
 function randomFieldPosition() {
   return [Math.floor(Math.random() * 50), Math.floor(Math.random() * 25)];
 }
+
+function removeConnections(index, isEnemy) {
+  // Check if index is valid (if enemy is found in list)
+  if (index === -1) return;
+  if (isEnemy) {
+    enemies[index] = null;
+    enemies.splice(index, 1); // 2nd parameter means remove one item only
+  } else {
+    hearts[index] = null;
+    hearts.splice(index, 1);
+  }
+}

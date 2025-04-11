@@ -1,7 +1,7 @@
 #menu {
   position: fixed;
   width: 800px;
-  height: 300px;
+  height: 400px;
   background-color: rgba(220, 230, 240, 0.8);
   backdrop-filter: blur(2px);
   left: 50%;
@@ -9,9 +9,12 @@
   transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
-  padding: 50px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   z-index: 2500;
+}
+
+#mainMenu {
+  width: 100%;
 }
 
 .menuContent {
@@ -19,24 +22,82 @@
   align-items: center;
   flex-direction: column;
   position: absolute;
-  top: 90px;
+  top: 20%;
 }
+
+.option {
+  font-size: 4em;
+  padding: 1% 8%;
+  margin-top: 2%;
+  background-color: rgba(250, 250, 250, 0.55);
+  transition-duration: 200ms;
+  min-width: 15%;
+  text-align: center;
+}
+
+.option:hover {
+  background-color: rgba(255, 255, 255, 0.85);
+  min-width: 50%;
+  cursor: pointer;
+}
+
+.back {
+  font-size: 2em;
+  padding: 1% 2%;
+  margin-top: 1%;
+  background-color: rgba(250, 250, 250, 0.55);
+  transition-duration: 200ms;
+  min-width: 8%;
+  text-align: center;
+}
+
+.back:hover {
+  background-color: rgba(255, 255, 255, 0.85);
+  min-width: 16%;
+  cursor: pointer;
+}
+
+/* TUTORIAL */
+
+#tutorial {
+  width: 100%;
+  display: flex;
+}
+
+#tutorialTextBlockWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.tutorialTextBlock {
+  margin: 2% 6%;
+  min-width: 60%;
+}
+
+.tutorialTextBlockTitle {
+  font-size: 1.8em;
+}
+
+/* LEVELS */
 
 #levels {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  height: 75%;
 }
 
 .lvl {
   display: inline-block;
-  width: 40px;
-  height: 40px;
-  margin: 8.5px;
+  width: 7%;
+  height: 18.7%;
+  margin: 1.5%;
   transition-duration: 200ms;
   text-align: center;
-  font-size: 1.6em;
+  font-size: 2.4em;
+  font-weight: 100;
 }
 
 .locked {
@@ -48,10 +109,18 @@
 }
 
 .unlocked {
-  background-color: rgba(160, 255, 160, 0.8);
+  background-color: rgba(255, 220, 100, 0.8);
 }
 
 .unlocked:hover {
+  background-color: rgba(255, 200, 50, 0.9);
+}
+
+.beat {
+  background-color: rgba(160, 255, 160, 0.8);
+}
+
+.beat:hover {
   background-color: rgba(100, 255, 100, 0.9);
 }
 
@@ -62,37 +131,5 @@
 #title {
   font-size: 3em;
   position: absolute;
-  top: 20px;
-}
-
-.option {
-  font-size: 4em;
-  padding: 5px 30px;
-  margin-top: 20px;
-  background-color: rgba(250, 250, 250, 0.55);
-  transition-duration: 200ms;
-  min-width: 200px;
-  text-align: center;
-}
-
-.option:hover {
-  background-color: rgba(255, 255, 255, 0.85);
-  min-width: 400px;
-  cursor: pointer;
-}
-
-.back {
-  font-size: 2em;
-  padding: 5px 20px;
-  margin-top: 10px;
-  background-color: rgba(250, 250, 250, 0.55);
-  transition-duration: 200ms;
-  min-width: 100px;
-  text-align: center;
-}
-
-.back:hover {
-  background-color: rgba(255, 255, 255, 0.85);
-  min-width: 200px;
-  cursor: pointer;
+  top: 5%;
 }

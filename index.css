@@ -1,64 +1,85 @@
+/* BASIC LAYOUT, CANVAS & FIELD */
+
+body {
+  background-color: #333;
+}
+
 #canvas {
+  background-color: #eee;
   position: fixed;
-  width: 1000px;
-  height: 500px;
+  width: 1010px;
+  height: 510px;
+  overflow: hidden;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+#field {
+  background-color: #fff;
+  position: fixed;
+  width: 98%;
+  height: 96%;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
 }
 
-.line_vertical {
+.vertical-line {
   position: fixed;
-  height: 500px;
+  height: 100%;
   width: 0.75px;
   background-image: linear-gradient(#444 0%, black 50%, #444 100%);
   z-index: 10;
 }
 
-.line_horizontal {
+.horizontal-line {
   position: fixed;
-  width: 1000px;
+  width: 100%;
   height: 0.75px;
   background-image: linear-gradient(90deg, #444 0%, black 50%, #444 100%);
   z-index: 10;
 }
 
-#mc {
+/* PLAYER */
+
+#player {
   anchor-name: --anchor-el;
-  height: 20px;
-  width: 20px;
-  /*background-color: #adf;*/
-  background-color: rgba(170, 230, 255, 0.9);
+  height: 4%;
+  width: 2%;
+  background-color: rgba(170, 210, 245, 0.9);
   position: fixed;
   z-index: 5;
 }
 
 #hpBar {
   position-anchor: --anchor-el;
-  width: 30px;
-  height: 3px;
+  width: 4%;
+  height: 0.5%;
   border: solid 1px black;
   position: absolute;
-  left: calc(anchor(left) - 5px);
-  bottom: calc(anchor(top) + 4px);
-  border-radius: 5px;
+  left: calc(anchor(left) - 1%);
+  bottom: calc(anchor(top) + 1%);
   background-color: white;
   overflow: hidden;
   z-index: 20;
 }
 
-#filling {
+#hpBarHealth {
   background-color: red;
   position: absolute;
-  width: 30px;
-  height: 5px;
+  width: calc(100% + 1px);
+  height: 100%;
 }
 
+/* PLAYER ATTACKS */
+
 .attack {
-  background-color: #faa;
-  height: 20px;
-  width: 20px;
+  background-color: #f77;
+  height: 4%;
+  width: 2%;
   position: fixed;
   display: none;
   z-index: 5;
@@ -66,7 +87,7 @@
 
 #aLeft,
 #aRight {
-  width: 40px;
+  width: 4%;
 }
 
 #aLeft {
@@ -79,7 +100,7 @@
 
 #aUp,
 #aDown {
-  height: 40px;
+  height: 8%;
 }
 
 #aUp {
@@ -114,6 +135,8 @@
   transform: translate(-100%, 100%);
 }
 
+/* ENEMY SQUARES ACCESSORIES */
+
 .charge {
   background-color: black;
   position: fixed;
@@ -133,7 +156,7 @@
   background-color: #777;
   position: fixed;
   width: 10px;
-  height: 500px;
+  height: 100%;
   top: 0px;
   opacity: 0;
 }
@@ -141,7 +164,7 @@
 .warnH {
   background-color: #777;
   position: fixed;
-  width: 1000px;
+  width: 100%;
   height: 10px;
   left: 0px;
   opacity: 0;
@@ -159,8 +182,8 @@
 .killV {
   background-color: black;
   position: fixed;
-  width: 20px;
-  height: 500px;
+  width: 2%;
+  height: 100%;
   top: 0px;
   opacity: 0;
 }
@@ -168,33 +191,30 @@
 .killH {
   background-color: black;
   position: fixed;
-  width: 1000px;
-  height: 20px;
+  width: 100%;
+  height: 4%;
   left: 0px;
   opacity: 0;
 }
 
 .areaAttack {
   position: fixed;
+  width: 100%;
+  height: 100%;
 }
 
-.black {
-  position: fixed;
-  background-color: black;
-  width: 20px;
-  height: 20px;
-}
+/* ENEMY SQUARES */
 
 .square {
   position: fixed;
-  width: 20px;
-  height: 20px;
+  width: 2%;
+  height: 4%;
 }
 
 .tile {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 2%;
+  height: 4%;
 }
 
 .r1 {
@@ -215,6 +235,10 @@
 
 .b2 {
   background-color: #57f;
+}
+
+.B {
+  background-color: black;
 }
 
 .p1 {

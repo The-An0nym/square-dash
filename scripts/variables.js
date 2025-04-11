@@ -1,18 +1,33 @@
-const can = document.getElementById("canvas");
-const mc = document.getElementById("mc");
-const filling = document.getElementById("filling");
-mc.style.top = "200.5px";
-mc.style.left = "500.5px";
-var McPosY = 10;
-var McPosX = 25;
+// Menu & Canvas
+const canva = document.getElementById("canvas");
+const field = document.getElementById("field");
+const menu = document.getElementById("menu");
+const levels = document.getElementById("levels");
+const tutorial = document.getElementById("tutorial");
 
-var maxLives = 5;
-var McLives = maxLives;
+// Player
+const player = document.getElementById("player");
+const hpBarHealth = document.getElementById("hpBarHealth");
 
-var atLevel = 1;
-var currLevel;
+player.style.top = "40%";
+player.style.left = "50%";
+let playerY = 10;
+let playerX = 25;
 
-var intervalTime = 500;
+let playerLives = (maxLives = 5);
+
+// Level
+let atLevel = localStorage.getItem("atLevel")
+  ? localStorage.getItem("atLevel")
+  : 1;
+let currLevel;
+
+// Timing
+let intervalTime = 500;
+
+// Attack
+let attackCooldown = [false, false, false, false, false];
+let movingNow = false;
 
 const aUp = document.getElementById("aUp");
 const aLeft = document.getElementById("aLeft");
@@ -45,5 +60,15 @@ const attackFields = [
   ],
 ];
 
-var enemies = [];
-var hearts = [];
+// Enemies
+let enemies = [];
+let hearts = [];
+
+// Level data
+let levelData;
+(async function () {
+  await fetch("levelData.json")
+    .then((res) => res.json())
+    .then((d) => (levelData = d))
+    .catch((e) => console.error(e));
+})();
