@@ -16,3 +16,5 @@ There are a total of 4 enemy types (all of them will damage the player upon touc
 Red and pink can have variations with up to 3 lives while blue can have variations up to 2 lives.
 
 A heart square that will spawn in some levels, which will display as a **green** square.
+
+The player can move using the arrow keys and attack using WASD and the space bar.
