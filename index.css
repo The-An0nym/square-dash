@@ -146,16 +146,16 @@ body {
 .dot {
   background-color: black;
   position: fixed;
-  width: 5px;
-  height: 5px;
-  border-radius: 5px;
+  width: 0.8%;
+  height: 1.6%;
+  border-radius: 50%;
   z-index: 15;
 }
 
 .warnV {
   background-color: #777;
   position: fixed;
-  width: 10px;
+  width: 1%;
   height: 100%;
   top: 0px;
   opacity: 0;
@@ -165,7 +165,7 @@ body {
   background-color: #777;
   position: fixed;
   width: 100%;
-  height: 10px;
+  height: 2%;
   left: 0px;
   opacity: 0;
 }

@@ -74,7 +74,7 @@ class Blue {
     // Calculate line length (and set width)
     const x = this.newX - this.x > 0 ? this.x : this.newX;
     const y = this.newY - this.y > 0 ? this.y : this.newY;
-    const w = this.newX - this.x === 0 ? 0.2 : Math.abs(this.newX - this.x) * 2;
+    const w = this.newX - this.x === 0 ? 0.1 : Math.abs(this.newX - this.x) * 2;
     const h = this.newY - this.y === 0 ? 0.2 : Math.abs(this.newY - this.y) * 4;
 
     // Style charge line and dot appropriately
@@ -89,9 +89,7 @@ class Blue {
 
     this.dot.setAttribute(
       "style",
-      `left: calc(${this.newX * 2 + 1}% - 2px); top: calc(${
-        this.newY * 4 + 2
-      }% - 2px);`
+      `left: ${this.newX * 2 + 0.6}%; top: ${this.newY * 4 + 1.2}%;`
     );
   }
 

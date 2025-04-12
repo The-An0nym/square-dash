@@ -96,14 +96,14 @@ class Black {
       this.warnLineV.setAttribute(
         "style",
         `display:block; 
-      left: calc(${this.x * 2}% + 3px);
-      animation: fadeOut 2s;`
+      left: ${this.x * 2 + 0.5}%;
+      animation: fadeOut ${intervalTime * 4}ms;`
       );
       this.warnLineH.setAttribute(
         "style",
         `display:block; 
-      top: calc(${this.y * 4}% + 3px);
-      animation: fadeOut 2s;`
+      top: ${this.y * 4 + 1}%;
+      animation: fadeOut ${intervalTime * 4}ms;`
       );
     });
   }
