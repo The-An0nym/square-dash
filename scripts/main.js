@@ -1,5 +1,5 @@
 document.addEventListener("keydown", (e) => {
-  switch (e.key) {
+  switch (e.code) {
     case "ArrowUp":
       moveVertical(1);
       break;
@@ -12,19 +12,19 @@ document.addEventListener("keydown", (e) => {
     case "ArrowRight":
       moveHorizontal(1);
       break;
-    case "w":
+    case "KeyW":
       attack(0);
       break;
-    case "a":
+    case "KeyA":
       attack(1);
       break;
-    case "s":
+    case "KeyS":
       attack(2);
       break;
-    case "d":
+    case "KeyD":
       attack(3);
       break;
-    case " ":
+    case "Space":
       attack(4);
       break;
   }
